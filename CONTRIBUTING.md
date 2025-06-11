@@ -59,32 +59,18 @@ are particularly valuable**: it's easy for people who have been using these
 lessons for a while to forget how impenetrable some of this material can be, so
 fresh eyes are always welcome.
 
-### What *Not* to Contribute
-
-Our lessons already contain more material than we can cover in a typical
-workshop, so we are usually *not* looking for more concepts or tools to add to
-them. As a rule, if you want to introduce a new idea, you must (a) estimate how
-long it will take to teach and (b) explain what you would take out to make room
-for it. The first encourages contributors to be honest about requirements; the
-second, to think hard about priorities.
-
-We are also not looking for exercises or other material that only run on one
-platform. Our workshops typically contain a mixture of Windows, macOS, and
-Linux users; in order to be usable, our lessons must run equally well on all
-three.
-
 ### Using GitHub
 
 If you choose to contribute via GitHub, you may want to look at [How to
 Contribute to an Open Source Project on GitHub][how-contribute]. In brief, we
 use [GitHub flow][github-flow] to manage changes:
 
-1. Create a new branch in your desktop copy of this repository for each
-   significant change.
-2. Commit the change in that branch.
-3. Push that branch to your fork of this repository on GitHub.
-4. Submit a pull request from that branch to the [upstream repository][repo].
-5. If you receive feedback, make changes on your desktop and push to your
+1. Create a fork of this repo and make a desktop copy of it. 
+2. Create a new branch in your desktop copy.
+3. Commit the change in that branch.
+4. Push that branch to your fork of this repository on GitHub.
+5. Submit a pull request from that branch to the [upstream repository][repo].
+6. If you receive feedback, make changes on your desktop and push to your
    branch on GitHub: the pull request will update automatically.
 
 NB: The published copy of the lesson is usually in the `main` branch.
@@ -102,14 +88,13 @@ community listed at <https://carpentries.org/connect/> including via social
 media, slack, newsletters, and email lists. You can also [reach us by
 email][contact].
 
-[repo]: https://example.com/FIXME
-[repo-issues]: https://example.com/FIXME/issues
-[contact]: mailto:team@carpentries.org
+[repo]: https://github.com/carpentries-incubator/web-scraping-python
+[repo-issues]: https://github.com/carpentries-incubator/web-scraping-python/issues
+[contact]: mailto:dreamlab@library.ucsb.edu
 [cp-site]: https://carpentries.org/
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: https://datacarpentry.org/lessons/
 [dc-site]: https://datacarpentry.org/
-[discuss-list]: https://carpentries.topicbox.com/groups/discuss
 [github]: https://github.com
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
