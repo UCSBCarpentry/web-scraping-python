@@ -18,8 +18,6 @@ This workshop is intended for learners who already have a basic understanding of
 
 The rendered version of the lesson is available at: <https://ucsbcarpentry.github.io/web-scraping-python/>
 
-An introduction to web scraping with Python.
-
 ## Teaching and contributing
 
 We'd love to know if you are teaching this lesson and the suggestions you have for improving it!
