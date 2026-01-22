@@ -230,7 +230,7 @@ As shown in the previous episode, we can store all this information in a Python 
 # Create an empty dictionary and fill it with the info we are interested in
 dict_workshop = {}
 dict_workshop['host'] = div_firsth3.find('h3').get_text()
-dict_workshop['link'] = div_firsth3.find('h3').find('a').get('href')
+dict_workshop['link'] = div_firsth3.find('a').get('href')
 dict_workshop['curriculum'] = div_firsth3.get('data-curriculum')
 dict_workshop['country'] = div_firsth3.get('data-country')
 dict_workshop['format'] = div_firsth3.get('data-meeting')
