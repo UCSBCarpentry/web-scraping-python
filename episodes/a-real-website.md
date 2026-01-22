@@ -252,7 +252,7 @@ workshop_list = []
 for item in divs: 
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = item.find('h3').find('a').get('href') # get is used to access attribute values as a dictionary
+    dict_workshop['link'] = item.find('a').get('href') # get is used to access attribute values as a dictionary
     dict_workshop['curriculum'] = item.get('data-curriculum')
     dict_workshop['country'] = item.get('data-country')
     dict_workshop['format'] = item.get('data-meeting')
@@ -283,7 +283,7 @@ workshop_list = []
 while child_div is not None:
     dict_workshop = {}
     dict_workshop['host'] = child_div.find('h3').get_text()
-    dict_workshop['link'] = child_div.find('h3').find('a').get('href')
+    dict_workshop['link'] = child_div.find('a').get('href')
     dict_workshop['curriculum'] = child_div.get('data-curriculum')
     dict_workshop['country'] = child_div.get('data-country')
     dict_workshop['format'] = child_div.get('data-meeting')
@@ -325,7 +325,7 @@ workshop_list = []
 for item in divs_past:
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = item.find('h3').find('a').get('href')
+    dict_workshop['link'] = item.find('a').get('href')
     dict_workshop['curriculum'] = item.get('data-curriculum')
     dict_workshop['country'] = item.get('data-country')
     dict_workshop['format'] = item.get('data-meeting')
@@ -362,7 +362,7 @@ We only need to add three lines to our loop, and this is how it would look like.
 for item in divs: 
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = item.find('h3').find('a')['href']
+    dict_workshop['link'] = item.find('a')['href']
     dict_workshop['curriculum'] = item.get('data-curriculum')
     dict_workshop['country'] = item.get('data-country')
     dict_workshop['format'] = item.get('data-meeting')
