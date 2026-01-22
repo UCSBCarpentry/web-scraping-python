@@ -59,7 +59,7 @@ The protocol is typically http or https for secure communications. The default p
 
 ### Request
 
-![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-req-res-details.png) 
+![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-req-res-details.png){alt='A diagram showing the HTTP request-response cycle between a client computer and a server, highlighting the URL + Verb request and the Status Code + Message Body response'} 
 
 The actions that should be performed on the host are specified via HTTP verbs. Today we are going to focus on two actions that are often used in web forms:
 
