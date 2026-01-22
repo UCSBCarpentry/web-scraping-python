@@ -56,11 +56,17 @@ from tqdm import tqdm
 
 # Getting the HTML from our desired URL as a text string
 url = 'https://carpentries.org/workshops/upcoming-workshops/'
-req = requests.get(url).text
+req = requests.get(url)
 
-# Cleaning and printing the string
-cleaned_req = re.sub(r'\s*\n\s*', '', req).strip()
-print(cleaned_req[0:1000])
+# Checking if the request was successful
+if req.status_code == 200:
+    req = req.text
+
+    # Cleaning and printing the string
+    cleaned_req = re.sub(r'\s*\n\s*', '', req).strip()
+    print(cleaned_req[0:1000])
+else:
+    print(f"Failed to retrieve the webpage. Status code: {req.status_code}")
 ```
 
 ```output
@@ -114,7 +120,7 @@ soup = BeautifulSoup(cleaned_req, 'html.parser')
 # Finding all third-level headers and doing a formatted print
 h3_by_tag = soup.find_all('h3')
 print("Number of h3 elements found: ", len(h3_by_tag))
-for n, h3 in enumerate(h3_by_tag):
+for n, h3 in enumerate(h3_by_tag, start=1):
     print(f"Workshop #{n} - {h3.get_text()}")
 ```
 
@@ -159,18 +165,18 @@ print(div_firsth3.prettify())
 
 Remember, the output shown here is probably different than yours, as the website is continuously updated.
 ```output
-<div class="p-8 mb-5 border" data-country="Puerto Rico" data-curriculum="Software Carpentry (Shell, Git, R for Reproducible Scientific Analysis)" data-meeting="In Person" data-program="Software Carpentry">
+<div class="p-8 mb-5 border" data-country="United States" data-curriculum="Library Carpentry (Intro to Data, Unix Shell, Git, and/or OpenRefine)" data-meeting="In Person" data-program="Library Carpentry">
  <div class="flex mb-4 -mx-2">
   <div class="flex items-center mx-2">
-   <img alt="" class="mx-1" src="/software.svg"/>
+   <img alt="" class="mx-1" src="/library.svg"/>
    <span class="text-[0.625rem] uppercase">
-    Software Carpentry
+    Library Carpentry
    </span>
   </div>
   <div class="flex items-center mx-2">
-   <img alt="" class="mr-1" height="20" src="/flags/pr.png" width="20"/>
+   <img alt="" class="mr-1" height="20" src="/flags/us.png" width="20"/>
    <span class="text-[0.625rem] uppercase">
-    Puerto Rico
+    United States
    </span>
   </div>
   <div class="flex items-center mx-2">
@@ -181,12 +187,12 @@ Remember, the output shown here is probably different than yours, as the website
   </div>
  </div>
  <h3 class="title text-base md:text-[1.75rem] leading-[2.125rem] font-semibold">
-  <a class="underline hover:text-blue-hover text-gray-dark" href="https://dept-ccom-uprrp.github.io/2025-06-04-uprrp-r/">
-   University of Puerto Rico
+  <a class="underline hover:text-blue-hover text-gray-dark" href="https://unt-carpentries.github.io/2026-01-22-unt/">
+   University of North Texas
   </a>
  </h3>
  <div class="mb-5 text-lg font-semibold text-gray-mid">
-  Software Carpentry (Shell, Git, R for Reproducible Scientific Analysis)
+  Library Carpentry (Intro to Data, Unix Shell, Git, and/or OpenRefine)
  </div>
  <div class="mb-2 text-xs">
   <strong class="font-bold">
@@ -194,7 +200,7 @@ Remember, the output shown here is probably different than yours, as the website
   </strong>
   :
   <span class="instructors">
-   Humberto Ortiz-Zuazaga, Airined Montes Mercado
+   Sarah Lynn Fisher, Maristella Feustle, Whitney Johnson-Freeman
   </span>
  </div>
  <div class="mb-4 text-xs">
@@ -203,11 +209,11 @@ Remember, the output shown here is probably different than yours, as the website
   </strong>
   :
   <span class="helpers">
-   Isabel Rivera, Diana Buitrago Escobar, Yabdiel Ramos Valerio
+   Marcia McIntosh, Trey Clark
   </span>
  </div>
  <div class="text-sm font-semibold text-gray-mid">
-  Jun 04 - Jun 10 2025
+  Jan 22 - Jan 22 2026
  </div>
 </div>
 ```
@@ -246,11 +252,11 @@ workshop_list = []
 for item in divs: 
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = div_firsth3.find('h3').find('a').get('href')
-    dict_workshop['curriculum'] = div_firsth3.get('data-curriculum')
-    dict_workshop['country'] = div_firsth3.get('data-country')
-    dict_workshop['format'] = div_firsth3.get('data-meeting')
-    dict_workshop['program'] = div_firsth3.get('data-program')
+    dict_workshop['link'] = item.find('h3').find('a').get('href') # get is used to access attribute values as a dictionary
+    dict_workshop['curriculum'] = item.get('data-curriculum')
+    dict_workshop['country'] = item.get('data-country')
+    dict_workshop['format'] = item.get('data-meeting')
+    dict_workshop['program'] = item.get('data-program')
     workshop_list.append(dict_workshop)
 
 # Transform list into a DataFrame
