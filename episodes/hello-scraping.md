@@ -44,7 +44,7 @@ We'll begin with simple examples and gradually move on to scraping more complex,
 When scraping data, it is essential to adhere to two main guidelines:
 
 1. **Data Privacy and Confidentiality**: Always confirm that the data being collected is publicly available and contains no personal or confidential information.
-2. **Server Load**: Avoid overwhelming the web server. When collecting large amount of data, best practice is to insert pauses between requests to allow the server to manage other traffic.
+2. **Server Load**: Avoid overwhelming the web server. When collecting large amounts of data, best practice is to insert pauses between requests to allow the server to manage other traffic.
 
 
 ## HTTP:  Hypertext Transfer Protocol quick overview
