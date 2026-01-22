@@ -34,7 +34,7 @@ When you want to extract information or download data from a website that is too
 
 
 Here, we’ll revisit some of those core ideas to build a more hands-on understanding of how content and data are structured on the web. 
-We’ll start by exploring what HTTP (Hypertext Transfer Protocol) and HTML (Hypertext Markup Language) is and how it uses tags to organize and format content.
+We’ll start by exploring what HTTP (Hypertext Transfer Protocol) and HTML (Hypertext Markup Language) are, and how HTML uses tags to organize and format content in a website.
 Then, we’ll introduce the BeautifulSoup library to parse HTML and make it easier to search for and extract specific elements from a webpage.
 
 We'll begin with simple examples and gradually move on to scraping more complex, real-world websites.
