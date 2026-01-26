@@ -24,11 +24,57 @@ exercises: 10
 This workshop is a continuation of our Introduction to Web Scraping workshop.
 If you're looking for a gentler introduction that uses XPath and the Scraper Chrome extension, take a look at the [workshop materials for that workshop](https://carpentries-incubator.github.io/lc-webscraping/).
 
+For recall, Web scraping is necessary when websites do not offer any interface to automate information or data retrieval via Web services, such as REST or SOAP, or any Application Programming Interfaces (APIs). Therefore, it is necessary to “scrape” the information embedded in the website itself.
+
+When you want to extract information or download data from a website that is too large for efficient manual downloading or needs to be frequently updated, you should first:
+
+1. Check if the website has any available Web services or if APIs have been developed to this end
+2. Check if any R (or other language you know) package has been developed by others as a wrapper around the API to facilitate the use of these Web services 
+3. Nothing found? Well, let's code this ourselves then!
+
+
 Here, we’ll revisit some of those core ideas to build a more hands-on understanding of how content and data are structured on the web. 
-We’ll start by exploring what HTML (Hypertext Markup Language) is and how it uses tags to organize and format content.
+We’ll start by exploring what HTTP (Hypertext Transfer Protocol) and HTML (Hypertext Markup Language) are, and how HTML uses tags to organize and format content in a website.
 Then, we’ll introduce the BeautifulSoup library to parse HTML and make it easier to search for and extract specific elements from a webpage.
 
 We'll begin with simple examples and gradually move on to scraping more complex, real-world websites.
+
+### Be respectful
+
+When scraping data, it is essential to adhere to two main guidelines:
+
+1. **Data Privacy and Confidentiality**: Always confirm that the data being collected is publicly available and contains no personal or confidential information.
+2. **Server Load**: Avoid overwhelming the web server. When collecting large amounts of data, best practice is to insert pauses between requests to allow the server to manage other traffic.
+
+
+## HTTP:  Hypertext Transfer Protocol quick overview
+
+### URL
+
+At the heart of web communications is the request message, which is sent via *U*niform *R*esource *L*ocators (URLs). Basic `URL` structure:
+
+![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-url-structure.png){alt='An anatomical breakdown of a URL string, labeling its components: protocol (http), host ([www.domain.com](https://www.domain.com/)), port (1234), resource path (/path/to/resource), and query (?a=b&x=y)'}
+
+The protocol is typically http or https for secure communications. The default port is 80, but one can be set explicitly, as illustrated in the above image. The resource path is the local path to the resource on the server.
+
+### Request
+
+![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-req-res-details.png){alt='A diagram showing the HTTP request-response cycle between a client computer and a server, highlighting the URL + Verb request and the Status Code + Message Body response'} 
+
+The actions that should be performed on the host are specified via HTTP verbs. Today we are going to focus on two actions that are often used in web forms:
+
+- `GET`: fetch an existing resource. The URL contains all the necessary information the server needs to locate and return the resource.
+- `POST`: create a new resource. POST requests usually carry a payload that specifies the data for the new resource.
+
+### Response
+
+Status codes:
+
+- `1xx`: Informational Messages
+- `2xx`: Successful; most known is 200: OK, request was successfully processed
+- `3xx`: Redirection
+- `4xx`: Client Error; the famous 404: resource not found
+- `5xx`: Server Error
 
 ## HTML quick overview
 
