@@ -34,7 +34,7 @@ When you want to extract information or download data from a website that is too
 
 
 Here, we’ll revisit some of those core ideas to build a more hands-on understanding of how content and data are structured on the web. 
-We’ll start by exploring what HTTP (Hypertext Transfer Protocol) and HTML (Hypertext Markup Language) is and how it uses tags to organize and format content.
+We’ll start by exploring what HTTP (Hypertext Transfer Protocol) and HTML (Hypertext Markup Language) are, and how HTML uses tags to organize and format content in a website.
 Then, we’ll introduce the BeautifulSoup library to parse HTML and make it easier to search for and extract specific elements from a webpage.
 
 We'll begin with simple examples and gradually move on to scraping more complex, real-world websites.
@@ -44,7 +44,7 @@ We'll begin with simple examples and gradually move on to scraping more complex,
 When scraping data, it is essential to adhere to two main guidelines:
 
 1. **Data Privacy and Confidentiality**: Always confirm that the data being collected is publicly available and contains no personal or confidential information.
-2. **Server Load**: Avoid overwhelming the web server. When collecting large amount of data, best practice is to insert pauses between requests to allow the server to manage other traffic.
+2. **Server Load**: Avoid overwhelming the web server. When collecting large amounts of data, best practice is to insert pauses between requests to allow the server to manage other traffic.
 
 
 ## HTTP:  Hypertext Transfer Protocol quick overview
@@ -53,13 +53,13 @@ When scraping data, it is essential to adhere to two main guidelines:
 
 At the heart of web communications is the request message, which is sent via *U*niform *R*esource *L*ocators (URLs). Basic `URL` structure:
 
-![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-url-structure.png)
+![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-url-structure.png){alt='An anatomical breakdown of a URL string, labeling its components: protocol (http), host ([www.domain.com](https://www.domain.com/)), port (1234), resource path (/path/to/resource), and query (?a=b&x=y)'}
 
 The protocol is typically http or https for secure communications. The default port is 80, but one can be set explicitly, as illustrated in the above image. The resource path is the local path to the resource on the server.
 
 ### Request
 
-![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-req-res-details.png) 
+![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-req-res-details.png){alt='A diagram showing the HTTP request-response cycle between a client computer and a server, highlighting the URL + Verb request and the Status Code + Message Body response'} 
 
 The actions that should be performed on the host are specified via HTTP verbs. Today we are going to focus on two actions that are often used in web forms:
 
