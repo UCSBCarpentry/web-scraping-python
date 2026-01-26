@@ -165,18 +165,18 @@ print(div_firsth3.prettify())
 
 Remember, the output shown here is probably different than yours, as the website is continuously updated.
 ```output
-<div class="p-8 mb-5 border" data-country="United States" data-curriculum="Library Carpentry (Intro to Data, Unix Shell, Git, and/or OpenRefine)" data-meeting="In Person" data-program="Library Carpentry">
+<div class="p-8 mb-5 border" data-country="Puerto Rico" data-curriculum="Software Carpentry (Shell, Git, R for Reproducible Scientific Analysis)" data-meeting="In Person" data-program="Software Carpentry">
  <div class="flex mb-4 -mx-2">
   <div class="flex items-center mx-2">
-   <img alt="" class="mx-1" src="/library.svg"/>
+   <img alt="" class="mx-1" src="/software.svg"/>
    <span class="text-[0.625rem] uppercase">
-    Library Carpentry
+    Software Carpentry
    </span>
   </div>
   <div class="flex items-center mx-2">
-   <img alt="" class="mr-1" height="20" src="/flags/us.png" width="20"/>
+   <img alt="" class="mr-1" height="20" src="/flags/pr.png" width="20"/>
    <span class="text-[0.625rem] uppercase">
-    United States
+    Puerto Rico
    </span>
   </div>
   <div class="flex items-center mx-2">
@@ -187,12 +187,12 @@ Remember, the output shown here is probably different than yours, as the website
   </div>
  </div>
  <h3 class="title text-base md:text-[1.75rem] leading-[2.125rem] font-semibold">
-  <a class="underline hover:text-blue-hover text-gray-dark" href="https://unt-carpentries.github.io/2026-01-22-unt/">
-   University of North Texas
+  <a class="underline hover:text-blue-hover text-gray-dark" href="https://dept-ccom-uprrp.github.io/2025-06-04-uprrp-r/">
+   University of Puerto Rico
   </a>
  </h3>
  <div class="mb-5 text-lg font-semibold text-gray-mid">
-  Library Carpentry (Intro to Data, Unix Shell, Git, and/or OpenRefine)
+  Software Carpentry (Shell, Git, R for Reproducible Scientific Analysis)
  </div>
  <div class="mb-2 text-xs">
   <strong class="font-bold">
@@ -200,7 +200,7 @@ Remember, the output shown here is probably different than yours, as the website
   </strong>
   :
   <span class="instructors">
-   Sarah Lynn Fisher, Maristella Feustle, Whitney Johnson-Freeman
+   Humberto Ortiz-Zuazaga, Airined Montes Mercado
   </span>
  </div>
  <div class="mb-4 text-xs">
@@ -209,11 +209,11 @@ Remember, the output shown here is probably different than yours, as the website
   </strong>
   :
   <span class="helpers">
-   Marcia McIntosh, Trey Clark
+   Isabel Rivera, Diana Buitrago Escobar, Yabdiel Ramos Valerio
   </span>
  </div>
  <div class="text-sm font-semibold text-gray-mid">
-  Jan 22 - Jan 22 2026
+  Jun 04 - Jun 10 2025
  </div>
 </div>
 ```
@@ -230,7 +230,7 @@ As shown in the previous episode, we can store all this information in a Python 
 # Create an empty dictionary and fill it with the info we are interested in
 dict_workshop = {}
 dict_workshop['host'] = div_firsth3.find('h3').get_text()
-dict_workshop['link'] = div_firsth3.find('a').get('href')
+dict_workshop['link'] = div_firsth3.find('h3').find('a').get('href')
 dict_workshop['curriculum'] = div_firsth3.get('data-curriculum')
 dict_workshop['country'] = div_firsth3.get('data-country')
 dict_workshop['format'] = div_firsth3.get('data-meeting')
@@ -252,7 +252,7 @@ workshop_list = []
 for item in divs: 
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = item.find('a').get('href') # get is used to access attribute values as a dictionary
+    dict_workshop['link'] = item.find('h3').find('a').get('href') # get is used to access attribute values as a dictionary
     dict_workshop['curriculum'] = item.get('data-curriculum')
     dict_workshop['country'] = item.get('data-country')
     dict_workshop['format'] = item.get('data-meeting')
@@ -283,7 +283,7 @@ workshop_list = []
 while child_div is not None:
     dict_workshop = {}
     dict_workshop['host'] = child_div.find('h3').get_text()
-    dict_workshop['link'] = child_div.find('a').get('href')
+    dict_workshop['link'] = child_div.find('h3').find('a').get('href')
     dict_workshop['curriculum'] = child_div.get('data-curriculum')
     dict_workshop['country'] = child_div.get('data-country')
     dict_workshop['format'] = child_div.get('data-meeting')
@@ -325,7 +325,7 @@ workshop_list = []
 for item in divs_past:
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = item.find('a').get('href')
+    dict_workshop['link'] = item.find('h3').find('a').get('href')
     dict_workshop['curriculum'] = item.get('data-curriculum')
     dict_workshop['country'] = item.get('data-country')
     dict_workshop['format'] = item.get('data-meeting')
@@ -362,7 +362,7 @@ We only need to add three lines to our loop, and this is how it would look like.
 for item in divs: 
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = item.find('a')['href']
+    dict_workshop['link'] = item.find('h3').find('a')['href']
     dict_workshop['curriculum'] = item.get('data-curriculum')
     dict_workshop['country'] = item.get('data-country')
     dict_workshop['format'] = item.get('data-meeting')
