@@ -325,32 +325,84 @@ with:</p>
 <li>Calling functions, understanding parameters/arguments and return
 values</li>
 </ul><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
-<hr class="half-width"><p>Steps:</p>
-<ol style="list-style-type: decimal"><li>If you already have Anaconda, Jupyter Lab or Jupyter Notebooks
-installed in your computer, skip to step 2. Follow Miniforge’s <a href="https://github.com/conda-forge/miniforge?tab=readme-ov-file#download" class="external-link">download</a>
-and <a href="https://github.com/conda-forge/miniforge?tab=readme-ov-file#install" class="external-link">installation</a>
-instructions for your respective operating system. If you are using a
-Windows machine, make sure you mark the option to “Add Miniforge3 to my
-PATH environment variable”.</li>
-<li>If you are using Mac or Linux, open the ‘Terminal’. If you are using
-Windows, open the ‘Command Prompt’ or ‘Miniforge Prompt’.</li>
-<li>Activate the base conda environment by typing and running the code
-below to activate your environment.</li>
-</ol><pre class="terminal"><code>conda activate</code></pre>
-<ol start="4" style="list-style-type: decimal"><li>Install the necessary packages by running:</li>
-</ol><pre class="terminal"><code>pip install requests beautifulsoup4 selenium webdriver-manager pandas tqdm jupyterlab</code></pre>
-<ol start="5" style="list-style-type: decimal"><li>Start Jupyter Lab by running:</li>
-</ol><pre class="terminal"><code>jupyter lab</code></pre>
-<ol start="6" style="list-style-type: decimal"><li>In a new Jupyter Notebook run the following code in a cell to check
-the necessary libraries can be loaded:</li>
+<hr class="half-width"><p>To run the code in this workshop, you will need to install:</p>
+<ul><li>
+<strong>The following Python libraries:</strong>
+<code>requests, beautifulsoup4, selenium, webdriver-manager, pandas, tqdm, jupyterlab</code>.</li>
+<li>
+<strong>Google Chrome:</strong> Please install the latest version of
+the Google Chrome web browser, as we’ll use its web developer tools. If
+you already have it, please check for updates by visiting
+<code>chrome://settings/help</code> in Chrome.</li>
+</ul><p>If you already have a preferred workflow for managing Python
+environments (e.g., Conda or venv), you may proceed as you normally do.
+However, if you are new to this or want a hassle-free setup, we highly
+recommend using <code>pixi</code> instructions below.</p>
+<div class="section level3">
+<h3 id="setting-up-your-environment-with-pixi">Setting up your environment with <code>pixi</code>
+<a class="anchor" aria-label="anchor" href="#setting-up-your-environment-with-pixi"></a></h3>
+<p>As described in their website, <code>pixi</code> is a cross-platform,
+multi-language (including Python and R) package manager and workflow
+tool built on the foundation of the conda ecosystem. In short, it is a
+tool that simplifies installing software and managing libraries
+(packages).</p>
+<p>Steps to configure your workshop environment::</p>
+<ol style="list-style-type: decimal"><li>
+<p><strong>Install <code>pixi</code>:</strong>Follow the
+instructions for your operating system here <a href="https://pixi.prefix.dev/latest/installation/" class="external-link">https://pixi.prefix.dev/latest/installation/</a>.</p>
+<ul><li>Note: Once the installation finishes, restart your Terminal (close
+it and open it again) to make sure the <code>pixi</code> command is
+recognized.</li>
+</ul></li>
+<li><p><strong>Navigate to your folder:</strong> In your Terminal, use
+the <code>cd</code> command to move to the folder where you want to keep
+your workshop files (e.g., <code>cd Desktop</code> or
+<code>cd Documents</code>).</p></li>
+<li><p><strong>Initialize the project:</strong> Run the following
+command to create a new folder named <code>webscraping</code> with the
+necessary configuration files</p></li>
+</ol><div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">pixi</span> init webscraping</span></code></pre>
+</div>
+<ol start="4" style="list-style-type: decimal"><li>
+<strong>Enter the folder:</strong> Move into the newly created
+project folder</li>
+</ol><div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">cd</span> webscraping</span></code></pre>
+</div>
+<ol start="5" style="list-style-type: decimal"><li>
+<strong>Install libraries:</strong> Run this command to install
+Python and all the required tools (this may take a minute)</li>
+</ol><div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">pixi</span> add python requests beautifulsoup4 selenium webdriver-manager pandas tqdm jupyterlab</span></code></pre>
+</div>
+<ol start="6" style="list-style-type: decimal"><li>
+<strong>Start JupyterLab:</strong> Launch the notebook interface by
+running</li>
 </ol><div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">pixi</span> run jupyter lab</span></code></pre>
+</div>
+<ol start="7" style="list-style-type: decimal"><li>
+<strong>Verify your setup:</strong> Inside JupyterLab, create a new
+Notebook (File &gt; New &gt; Notebook), copy the code below into a cell,
+and run it by pressing <kbd>Shift</kbd>+<kbd>Enter</kbd>
+</li>
+</ol><div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome()</span></code></pre>
+</div>
+<p>You are now ready for the workshop! Learn more about pixi by reading
+their <a href="https://pixi.prefix.dev/latest/" class="external-link">documentation</a>.</p>
 </div>
 </section><section><h2 class="section-heading" id="additional-resources">Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"></a></h2>
 <hr class="half-width"><ul><li>Mitchell, R. (Ryan E. ). (2024). Web scraping with Python : data
