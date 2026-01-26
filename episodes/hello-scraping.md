@@ -53,7 +53,7 @@ When scraping data, it is essential to adhere to two main guidelines:
 
 At the heart of web communications is the request message, which is sent via *U*niform *R*esource *L*ocators (URLs). Basic `URL` structure:
 
-![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-url-structure.png){An anatomical breakdown of a URL string, labeling its components: protocol (http), host ([www.domain.com](https://www.domain.com/)), port (1234), resource path (/path/to/resource), and query (?a=b&x=y)}
+![credits: https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177](fig/http1-url-structure.png){alt='An anatomical breakdown of a URL string, labeling its components: protocol (http), host ([www.domain.com](https://www.domain.com/)), port (1234), resource path (/path/to/resource), and query (?a=b&x=y)'}
 
 The protocol is typically http or https for secure communications. The default port is 80, but one can be set explicitly, as illustrated in the above image. The resource path is the local path to the resource on the server.
 
