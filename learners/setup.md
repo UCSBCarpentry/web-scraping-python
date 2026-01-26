@@ -21,34 +21,58 @@ This workshop is intended for learners who already have a basic understanding of
 
 ## Software Setup
 
-Steps:
+To run the code in this workshop, you will need to install:
 
-1. If you already have Anaconda, Jupyter Lab or Jupyter Notebooks installed in your computer, skip to step 2. Follow Miniforge's [download](https://github.com/conda-forge/miniforge?tab=readme-ov-file#download) and [installation](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) instructions for your respective operating system. If you are using a Windows machine, make sure you mark the option to "Add Miniforge3 to my PATH environment variable".
-2. If you are using Mac or Linux, open the 'Terminal'. If you are using Windows, open the 'Command Prompt' or 'Miniforge Prompt'.
-3. Activate the base conda environment by typing and running the code below to activate your environment.
+- **The following Python libraries:** `requests, beautifulsoup4, selenium, webdriver-manager, pandas, tqdm, jupyterlab`.
+- **Google Chrome:** Please install the latest version of the Google Chrome web browser, as we'll use its web developer tools. If you already have it, please check for updates by visiting `chrome://settings/help` in Chrome.
 
-```terminal
-conda activate
+If you already have a preferred workflow for managing Python environments (e.g., Conda or venv), you may proceed as you normally do. However, if you are new to this or want a hassle-free setup, we highly recommend using `pixi` instructions below.
+
+
+### Setting up your environment with `pixi`
+
+As described in their website, `pixi` is a cross-platform, multi-language (including Python and R) package manager and workflow tool built on the foundation of the conda ecosystem. In short, it is a tool that simplifies installing software and managing libraries (packages).
+
+Steps to configure your workshop environment::
+
+1. **Install `pixi`:**Follow the instructions for your operating system here [https://pixi.prefix.dev/latest/installation/](https://pixi.prefix.dev/latest/installation/).
+
+    - Note: Once the installation finishes, restart your Terminal (close it and open it again) to make sure the `pixi` command is recognized.
+
+2. **Navigate to your folder:** In your Terminal, use the `cd` command to move to the folder where you want to keep your workshop files (e.g., `cd Desktop` or `cd Documents`).
+
+3. **Initialize the project:** Run the following command to create a new folder named     `webscraping` with the necessary configuration files
+
+```bash
+pixi init webscraping
 ```
 
-4. Install the necessary packages by running:
-```terminal
-pip install requests beautifulsoup4 selenium webdriver-manager pandas tqdm jupyterlab
+4. **Enter the folder:** Move into the newly created project folder
+
+```bash
+cd webscraping
 ```
 
-5. Start Jupyter Lab by running: 
-```terminal
-jupyter lab
+5. **Install libraries:** Run this command to install Python and all the required tools (this may take a minute) 
+
+```bash
+pixi add python requests beautifulsoup4 selenium webdriver-manager pandas tqdm jupyterlab
 ```
 
-6. In a new Jupyter Notebook run the following code in a cell to check the necessary libraries can be loaded:
+6. **Start JupyterLab:** Launch the notebook interface by running 
+
+```bash
+pixi run jupyter lab
+```
+
+7. **Verify your setup:** Inside JupyterLab, create a new Notebook (File > New > Notebook), copy the code below into a cell, and run it by pressing <kbd>Shift</kbd>+<kbd>Enter</kbd>
+
 ```python
-from bs4 import BeautifulSoup
-import requests
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-import pandas as pd
+driver = webdriver.Chrome()
 ```
+
+You are now ready for the workshop! Learn more about pixi by reading their [documentation](https://pixi.prefix.dev/latest/).
 
 ## Additional resources
 - Mitchell, R. (Ryan E. ). (2024). Web scraping with Python : data extraction from the modern web (3rd edition.). O’Reilly Media, Inc.
