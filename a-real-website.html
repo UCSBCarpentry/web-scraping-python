@@ -303,7 +303,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Scraping a real website</h1>
-        <p>Last updated on 2026-01-15 |
+        <p>Last updated on 2026-01-27 |
 
         <a href="https://github.com/carpentries-incubator/web-scraping-python/edit/main/episodes/a-real-website.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -394,11 +394,17 @@ Carpentry Introduction to Regular Expressions</a>.</p>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co"># Getting the HTML from our desired URL as a text string</span></span>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://carpentries.org/workshops/upcoming-workshops/'</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>req <span class="op">=</span> requests.get(url).text</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>req <span class="op">=</span> requests.get(url)</span>
 <span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co"># Cleaning and printing the string</span></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'\s*\n\s*'</span>, <span class="st">''</span>, req).strip()</span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="bu">print</span>(cleaned_req[<span class="dv">0</span>:<span class="dv">1000</span>])</span></code></pre>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co"># Checking if the request was successful</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="cf">if</span> req.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>    req <span class="op">=</span> req.text</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>    <span class="co"># Cleaning and printing the string</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>    cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'\s*\n\s*'</span>, <span class="st">''</span>, req).strip()</span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>    <span class="bu">print</span>(cleaned_req[<span class="dv">0</span>:<span class="dv">1000</span>])</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to retrieve the webpage. Status code: </span><span class="sc">{</span>req<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -465,7 +471,7 @@ third-level headers (<code>&lt;h3&gt;</code>) in the page.</p>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Finding all third-level headers and doing a formatted print</span></span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>h3_by_tag <span class="op">=</span> soup.find_all(<span class="st">'h3'</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of h3 elements found: "</span>, <span class="bu">len</span>(h3_by_tag))</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="cf">for</span> n, h3 <span class="kw">in</span> <span class="bu">enumerate</span>(h3_by_tag):</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="cf">for</span> n, h3 <span class="kw">in</span> <span class="bu">enumerate</span>(h3_by_tag, start<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Workshop #</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>h3<span class="sc">.</span>get_text()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <p>Besides searching elements by tag, it’s often useful to search using
@@ -622,11 +628,11 @@ the containers for each workshop.</p>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> divs: </span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>    dict_workshop <span class="op">=</span> {}</span>
 <span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>    dict_workshop[<span class="st">'host'</span>] <span class="op">=</span> item.find(<span class="st">'h3'</span>).get_text()</span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>    dict_workshop[<span class="st">'link'</span>] <span class="op">=</span> div_firsth3.find(<span class="st">'h3'</span>).find(<span class="st">'a'</span>).get(<span class="st">'href'</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>    dict_workshop[<span class="st">'curriculum'</span>] <span class="op">=</span> div_firsth3.get(<span class="st">'data-curriculum'</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>    dict_workshop[<span class="st">'country'</span>] <span class="op">=</span> div_firsth3.get(<span class="st">'data-country'</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>    dict_workshop[<span class="st">'format'</span>] <span class="op">=</span> div_firsth3.get(<span class="st">'data-meeting'</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>    dict_workshop[<span class="st">'program'</span>] <span class="op">=</span> div_firsth3.get(<span class="st">'data-program'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>    dict_workshop[<span class="st">'link'</span>] <span class="op">=</span> item.find(<span class="st">'h3'</span>).find(<span class="st">'a'</span>).get(<span class="st">'href'</span>) <span class="co"># get is used to access attribute values as a dictionary</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>    dict_workshop[<span class="st">'curriculum'</span>] <span class="op">=</span> item.get(<span class="st">'data-curriculum'</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>    dict_workshop[<span class="st">'country'</span>] <span class="op">=</span> item.get(<span class="st">'data-country'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>    dict_workshop[<span class="st">'format'</span>] <span class="op">=</span> item.get(<span class="st">'data-meeting'</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>    dict_workshop[<span class="st">'program'</span>] <span class="op">=</span> item.get(<span class="st">'data-program'</span>)</span>
 <span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>    workshop_list.append(dict_workshop)</span>
 <span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a></span>
 <span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co"># Transform list into a DataFrame</span></span>
@@ -1036,8 +1042,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/web-scraping-python/a-real-website.html",
   "identifier": "https://carpentries-incubator.github.io/web-scraping-python/a-real-website.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2026-01-15",
-  "datePublished": "2026-01-26"
+  "dateModified": "2026-01-27",
+  "datePublished": "2026-01-27"
 }
 
   </script><script>
