@@ -56,11 +56,17 @@ from tqdm import tqdm
 
 # Getting the HTML from our desired URL as a text string
 url = 'https://carpentries.org/workshops/upcoming-workshops/'
-req = requests.get(url).text
+req = requests.get(url)
 
-# Cleaning and printing the string
-cleaned_req = re.sub(r'\s*\n\s*', '', req).strip()
-print(cleaned_req[0:1000])
+# Checking if the request was successful
+if req.status_code == 200:
+    req = req.text
+
+    # Cleaning and printing the string
+    cleaned_req = re.sub(r'\s*\n\s*', '', req).strip()
+    print(cleaned_req[0:1000])
+else:
+    print(f"Failed to retrieve the webpage. Status code: {req.status_code}")
 ```
 
 ```output
@@ -114,7 +120,7 @@ soup = BeautifulSoup(cleaned_req, 'html.parser')
 # Finding all third-level headers and doing a formatted print
 h3_by_tag = soup.find_all('h3')
 print("Number of h3 elements found: ", len(h3_by_tag))
-for n, h3 in enumerate(h3_by_tag):
+for n, h3 in enumerate(h3_by_tag, start=1):
     print(f"Workshop #{n} - {h3.get_text()}")
 ```
 
@@ -246,11 +252,11 @@ workshop_list = []
 for item in divs: 
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = div_firsth3.find('h3').find('a').get('href')
-    dict_workshop['curriculum'] = div_firsth3.get('data-curriculum')
-    dict_workshop['country'] = div_firsth3.get('data-country')
-    dict_workshop['format'] = div_firsth3.get('data-meeting')
-    dict_workshop['program'] = div_firsth3.get('data-program')
+    dict_workshop['link'] = item.find('h3').find('a').get('href') # get is used to access attribute values as a dictionary
+    dict_workshop['curriculum'] = item.get('data-curriculum')
+    dict_workshop['country'] = item.get('data-country')
+    dict_workshop['format'] = item.get('data-meeting')
+    dict_workshop['program'] = item.get('data-program')
     workshop_list.append(dict_workshop)
 
 # Transform list into a DataFrame
