@@ -797,7 +797,7 @@ HTML of our example.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>One way of completing the exercise is as follows.</p>
 <div class="codewrapper sourceCode" id="cb13">
@@ -1094,7 +1094,7 @@ Carpentry Introduction to Regular Expressions</a>.</p>
 <span id="cb1-15"><a href="#cb1-15" tabindex="-1" aria-label="code-block-1-15"></a>    req <span class="op">=</span> req.text</span>
 <span id="cb1-16"><a href="#cb1-16" tabindex="-1" aria-label="code-block-1-16"></a></span>
 <span id="cb1-17"><a href="#cb1-17" tabindex="-1" aria-label="code-block-1-17"></a>    <span class="co"># Cleaning and printing the string</span></span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1" aria-label="code-block-1-18"></a>    cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'\s*\n\s*'</span>, <span class="st">''</span>, req).strip()</span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1" aria-label="code-block-1-18"></a>    cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="dv">\s</span><span class="op">*</span><span class="ch">\n</span><span class="dv">\s</span><span class="op">*</span><span class="vs">'</span>, <span class="st">''</span>, req).strip()</span>
 <span id="cb1-19"><a href="#cb1-19" tabindex="-1" aria-label="code-block-1-19"></a>    <span class="bu">print</span>(cleaned_req[<span class="dv">0</span>:<span class="dv">1000</span>])</span>
 <span id="cb1-20"><a href="#cb1-20" tabindex="-1" aria-label="code-block-1-20"></a><span class="cf">else</span>:</span>
 <span id="cb1-21"><a href="#cb1-21" tabindex="-1" aria-label="code-block-1-21"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to retrieve the webpage. Status code: </span><span class="sc">{</span>req<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
@@ -1542,7 +1542,7 @@ workshop in the DataFrame and take a look.</p>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1" aria-label="code-block-13-4"></a></span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1" aria-label="code-block-13-5"></a><span class="co"># Retrieve the HTML</span></span>
 <span id="cb13-6"><a href="#cb13-6" tabindex="-1" aria-label="code-block-13-6"></a>req <span class="op">=</span> requests.get(first_url).text</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1" aria-label="code-block-13-7"></a>cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'\s*\n\s*'</span>, <span class="st">''</span>, req).strip()</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1" aria-label="code-block-13-7"></a>cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="dv">\s</span><span class="op">*</span><span class="ch">\n</span><span class="dv">\s</span><span class="op">*</span><span class="vs">'</span>, <span class="st">''</span>, req).strip()</span>
 <span id="cb13-8"><a href="#cb13-8" tabindex="-1" aria-label="code-block-13-8"></a></span>
 <span id="cb13-9"><a href="#cb13-9" tabindex="-1" aria-label="code-block-13-9"></a><span class="co"># Parse the HTML</span></span>
 <span id="cb13-10"><a href="#cb13-10" tabindex="-1" aria-label="code-block-13-10"></a>soup <span class="op">=</span> BeautifulSoup(cleaned_req, <span class="st">'html.parser'</span>)</span></code></pre>
@@ -1579,7 +1579,7 @@ though we could extend this to all workshops if needed.</p>
 <span id="cb14-8"><a href="#cb14-8" tabindex="-1" aria-label="code-block-14-8"></a><span class="cf">for</span> item <span class="kw">in</span> tqdm(urls):</span>
 <span id="cb14-9"><a href="#cb14-9" tabindex="-1" aria-label="code-block-14-9"></a>    <span class="co"># Get the HTML and parse it</span></span>
 <span id="cb14-10"><a href="#cb14-10" tabindex="-1" aria-label="code-block-14-10"></a>    req <span class="op">=</span> requests.get(item).text</span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1" aria-label="code-block-14-11"></a>    cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'\s*\n\s*'</span>, <span class="st">''</span>, req).strip()</span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1" aria-label="code-block-14-11"></a>    cleaned_req <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="dv">\s</span><span class="op">*</span><span class="ch">\n</span><span class="dv">\s</span><span class="op">*</span><span class="vs">'</span>, <span class="st">''</span>, req).strip()</span>
 <span id="cb14-12"><a href="#cb14-12" tabindex="-1" aria-label="code-block-14-12"></a>    soup <span class="op">=</span> BeautifulSoup(cleaned_req, <span class="st">'html.parser'</span>)</span>
 <span id="cb14-13"><a href="#cb14-13" tabindex="-1" aria-label="code-block-14-13"></a></span>
 <span id="cb14-14"><a href="#cb14-14" tabindex="-1" aria-label="code-block-14-14"></a>    <span class="co"># Start an empty dictionary and fill it with the URL, which</span></span>
@@ -2244,8 +2244,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/web-scraping-python/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/web-scraping-python/instructor/aio.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "dateModified": "2026-05-05",
+  "datePublished": "2026-05-05"
 }
 
   </script><script>
